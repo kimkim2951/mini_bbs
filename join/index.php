@@ -5,6 +5,11 @@ if ($_POST['name'] === '' ) {
 if ($_POST['email'] === '' ) {
 	$error['email'] = 'blank';
 }
+// strlenは入力した文字数を測ってくれるメソッド
+if (strlen($_POST['password']) < 4 ) {
+	// 'blank'ではなく'length'を使う事で違う種類のエラーだと認識させる。
+	$error['password'] = 'length';
+}
 if ($_POST['password'] === '' ) {
 	$error['password'] = 'blank';
 }
@@ -45,6 +50,9 @@ if ($_POST['password'] === '' ) {
 		<dt>パスワード<span class="required">必須</span></dt>
 		<dd>
         	<input type="password" name="password" size="10" maxlength="20" value="<?php print(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>" />
+					<?php if ($error['password'] === 'length'): ?>
+					<p class="error">* パスワードは4文字以上で入力してください</p>
+					<?php endif; ?>
 					<?php if ($error['password'] === 'blank'): ?>
 					<p class="error">* パスワードを入力してください</p>
 					<?php endif; ?>
