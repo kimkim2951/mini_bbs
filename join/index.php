@@ -1,17 +1,24 @@
 <?php 
-if ($_POST['name'] === '' ) {
-	$error['name'] = 'blank';
-}
-if ($_POST['email'] === '' ) {
-	$error['email'] = 'blank';
-}
-// strlenは入力した文字数を測ってくれるメソッド
-if (strlen($_POST['password']) < 4 ) {
-	// 'blank'ではなく'length'を使う事で違う種類のエラーだと認識させる。
-	$error['password'] = 'length';
-}
-if ($_POST['password'] === '' ) {
-	$error['password'] = 'blank';
+if(!empty($_POST)) {
+	if ($_POST['name'] === '' ) {
+		$error['name'] = 'blank';
+	}
+	if ($_POST['email'] === '' ) {
+		$error['email'] = 'blank';
+	}
+	// strlenは入力した文字数を測ってくれるメソッド
+	if (strlen($_POST['password']) < 4 ) {
+		// 'blank'ではなく'length'を使う事で違う種類のエラーだと認識させる。
+		$error['password'] = 'length';
+	}
+	if ($_POST['password'] === '' ) {
+		$error['password'] = 'blank';
+	}
+	// emptyは$errorが空かを確認するメソッド
+	if (empty($error)) {
+	header('Location: check.php');
+	exit();
+	}
 }
 ?>
 <!DOCTYPE html>
