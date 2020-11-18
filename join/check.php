@@ -5,6 +5,11 @@ if (!isset($_SESSION['join'])) {
 	header('Location: index.php');
 	exit();
 }
+// URLパラメーターとして「action=rewrite」だったら
+if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
+	// この場合はSESSIONの内容をPOSTに代入
+	$_POST = $_SESSION['ioin'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -33,7 +38,8 @@ if (!isset($_SESSION['join'])) {
     </dd>
 		<dt>メールアドレス</dt>
 		<dd>
-        </dd>
+		<?php print(htmlspecialchars($_SESSION['join']['email'], ENT_QUOTES)); ?>
+  	</dd>
 		<dt>パスワード</dt>
 		<dd>
 		【表示されません】
