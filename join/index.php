@@ -18,7 +18,12 @@ if(!empty($_POST)) {
 	}
 	// emptyは$errorが空かを確認するメソッド
 	if (empty($error)) {
+	// 下のfileから持ってきて、../member_picture/に保存場所を移動。更にセッションに保存する。
+	$image = date('YmdHis') . $_FILES['image']['name'];
+	move_uploaded_file($_FILES['image']['tmp_name'],'../member_picture/' . $image);
+	// 20201119myface.pngのようなファイル名で保存される。日付の付与で同名の場合の上書きを避ける。
 	$_SESSION['join'] = $_POST;
+	$_SESSION['join']['image'] = $image;
 	header('Location: check.php');
 	exit();
 	}
