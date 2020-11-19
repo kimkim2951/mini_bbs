@@ -16,6 +16,16 @@ if(!empty($_POST)) {
 	if ($_POST['password'] === '' ) {
 		$error['password'] = 'blank';
 	}
+	// 画像が選択されていればの処理
+	$filename = $_FILES['image']['name'];
+	if (!empty($filename)) {
+		// 以下のファイル形式以外拒否する記述
+		$ext = substr($filename, -3);
+		if (ext != 'jpg' && $ext != 'git') {
+			$error['image'] = 'type';
+		}
+
+	}
 	// emptyは$errorが空かを確認するメソッド
 	if (empty($error)) {
 	// 下のfileから持ってきて、../member_picture/に保存場所を移動。更にセッションに保存する。
@@ -75,6 +85,9 @@ if(!empty($_POST)) {
 		<dt>写真など</dt>
 		<dd>
         	<input type="file" name="image" size="35" value="test"  />
+					<?php if ($error['image'] === 'type'): ?>
+					<p class="error">* 写真などは「.gif」または「.jpg」「.png」の画像を指定してください</p>
+					<?php endif; ?>
         </dd>
 	</dl>
 	<div><input type="submit" value="入力内容を確認する" /></div>
