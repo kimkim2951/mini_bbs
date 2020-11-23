@@ -5,7 +5,7 @@
 - 
 
 ## :globe_with_meridians: コンセプト
-- 
+- PHP学習の一環として作成しました。
 
  <a>![PHP TOP画像]</a>
 
