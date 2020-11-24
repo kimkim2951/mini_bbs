@@ -15,7 +15,10 @@
 <a><img src="https://user-images.githubusercontent.com/67769876/99362884-64511280-28f7-11eb-8ce0-9fcc1317c33e.png" width="50px;" /></a> <!-- CSSのロゴ -->
 
 ## :globe_with_meridians: 機能紹介
-- 
+- ログイン・ログアウトする事が出来ます。
+- つぶやきを投稿する事が出来ます。
+- 写真のアップロードをする事が出来ます。ファイル形式が適していないものはアップロードする事が出来ないように設定しています。
+
 
 ## :globe_with_meridians: 工夫したポイント
 - 
