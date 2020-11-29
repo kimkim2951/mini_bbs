@@ -38,6 +38,7 @@ if(!empty($_POST)) {
 	exit();
 	}
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
